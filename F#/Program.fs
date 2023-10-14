@@ -4,8 +4,12 @@
 
 let runFunc (day: System.Type) (funcName: string) =
     let AorB = if funcName.EndsWith "1" then "A" else "B"
-    let output = (day.GetMethod funcName).Invoke(null, null)
-    printfn $"{day.Name}{AorB}: {output}"
+    let method = day.GetMethod funcName
+    if method = null then
+        printfn $"{day.Name}{AorB}: missing"
+    else
+        let output = method.Invoke(null, null)
+        printfn $"{day.Name}{AorB}: {output}"
 
 let bothSolves day =
     runFunc day "get_solve1"
@@ -13,4 +17,5 @@ let bothSolves day =
 
 System.Reflection.Assembly.GetExecutingAssembly().GetTypes()
 |> Seq.filter isDay
+|> Seq.sortBy (fun t -> t.Name)
 |> Seq.iter bothSolves

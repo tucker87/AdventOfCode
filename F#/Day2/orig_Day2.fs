@@ -1,4 +1,4 @@
-module Day2
+module orig_Day2
 
 let data = System.IO.File.ReadAllLines("./Day2/Input.txt") |> Array.toList
 

@@ -1,7 +1,16 @@
-﻿printfn "Day1A: %d" Day1.solve1
-printfn "Day1B:%d" Day1.solve2
-printfn "Day1BSimple:%d" Day1.solve2Simple
-printfn "Day2A:%d" Day2.solve1
-printfn "Day2B:%d" Day2.solve2
-printfn "Day3A:%d" Day3.solve1
-printfn "Day3B:%d" Day3.solve2
+﻿let isDay (t: System.Type) =
+    not <| t.Name.StartsWith "$"
+    && t.Name.StartsWith "Day"
+
+let runFunc (day: System.Type) (funcName: string) =
+    let AorB = if funcName.EndsWith "1" then "A" else "B"
+    let output = (day.GetMethod funcName).Invoke(null, null)
+    printfn $"{day.Name}{AorB}: {output}"
+
+let bothSolves day =
+    runFunc day "get_solve1"
+    runFunc day "get_solve2"
+
+System.Reflection.Assembly.GetExecutingAssembly().GetTypes()
+|> Seq.filter isDay
+|> Seq.iter bothSolves

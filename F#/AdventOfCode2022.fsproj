@@ -6,11 +6,9 @@
   <ItemGroup>
     
     <Compile Include="Extensions/Seq.fs" />
-    <Compile Include="Day1\Day1.fs" />
     <Compile Include="Day2\RPS.fs" />
     <Compile Include="Day2\Action.fs" />
-    <Compile Include="Day2\Day2.fs" />
-    <Compile Include="Day3\Day3.fs" />
+    <Compile Include="Day*\Day*.fs" />
     <Compile Include="Program.fs" />
   </ItemGroup>
 </Project>

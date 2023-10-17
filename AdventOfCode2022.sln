@@ -5,7 +5,7 @@ VisualStudioVersion = 17.5.002.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdventOfCode2022", "./C#/AdventOfCode2022.csproj", "{83915889-343D-43B9-A91F-118AF4767728}"
 EndProject
-Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "AdventOfCode2022", "./F#/AdventOfCode2022.fsproj", "{7E2E40EF-2607-478B-B5F6-21CEFAE50D8B}"
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "AdventOfCode2022F", "./F#/AdventOfCode2022.fsproj", "{7E2E40EF-2607-478B-B5F6-21CEFAE50D8B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

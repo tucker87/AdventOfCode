@@ -37,7 +37,10 @@ public static class Day7A
                     break;
             }
         }
-        return folders.Select(f => f.FolderSize()).Where(s => s < 100000).Sum();
+        var sizes = folders.Select(f => f.FolderSize()).Where(s => s < 100000);
+        foreach(var size in sizes)
+            System.Console.WriteLine(size);
+        return sizes.Sum();
     }
 }
 

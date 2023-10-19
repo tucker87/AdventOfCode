@@ -1,4 +1,4 @@
-module Day3
+module Day03
 
 let data = System.IO.File.ReadAllLines("./Inputs/Day3.txt")
 

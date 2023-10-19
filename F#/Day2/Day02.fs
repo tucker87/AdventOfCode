@@ -1,4 +1,4 @@
-module Day2
+module Day02
 open Action
 
 let data = System.IO.File.ReadAllLines("./Inputs/Day2.txt") |> Array.toList

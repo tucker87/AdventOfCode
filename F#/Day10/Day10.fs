@@ -59,7 +59,5 @@ let solve2 =
     |> List.map (fun (c, r) -> (c % 40, r))
     |> List.map (fun (c, r) -> if c = r || c = r-1 || c = r+1 then '#' else '.')
     |> List.chunkBySize 40
-    |> List.iter (fun i -> printfn "%A" (System.String (List.toArray i)))
-
-    "See Drawing"
+    |> List.fold (fun acc c -> acc + (System.String (List.toArray c) + "\n" )) "\n"
     

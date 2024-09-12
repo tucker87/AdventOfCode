@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+  </PropertyGroup>
+  <ItemGroup>
+    
+    <Compile Include="Extensions/Seq.fs" />
+    <Compile Include="Day2\RPS.fs" />
+    <Compile Include="Day2\Action.fs" />
+    <Compile Include="Day*\Day*.fs" />
+    <Compile Include="Playground/Tileset.fs" />
+    <Compile Include="Playground/Jude.fs" />
+    <Compile Include="Program.fs" />
+  </ItemGroup>
+</Project>

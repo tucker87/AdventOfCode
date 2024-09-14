@@ -33,6 +33,8 @@ type Set =
   static member is_valid s =
       s.Colors |> List.forall (fun c -> Color.is_valid c)
 
+type PowerSet = { Red: int; Green: int; Blue: int; }
+
 type Game = 
   { Id: int; Sets: Set array }
   static member fromString(line: string) =
@@ -42,6 +44,20 @@ type Game =
 
   static member isValid g =
     g.Sets |> Array.forall Set.is_valid
+
+  static member power g =
+    let getColors s =
+      Array.ofList s.Colors
+    let bigSet acc s =
+      match s with
+      | Red a -> { acc with Red = max acc.Red a }
+      | Green a -> { acc with Green = max acc.Green a }
+      | Blue a -> { acc with Blue = max acc.Blue a }
+    g.Sets 
+    |> Array.collect getColors 
+    |> Array.fold bigSet { Red = 0; Blue = 0; Green = 0 }
+    |> (fun ps -> ps.Red * ps.Green * ps.Blue)
+
 
 let sample = 
     [
@@ -58,4 +74,8 @@ let solve1 =
   |> List.filter Game.isValid
   |> List.sumBy (fun g -> g.Id)
 
-let solve2 = "NA"
+let solve2 =
+  data
+  |> List.map Game.fromString
+  |> List.map Game.power
+  |> List.sumBy (fun ps -> ps)

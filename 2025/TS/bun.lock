@@ -1,0 +1,14 @@
+{
+  "lockfileVersion": 1,
+  "configVersion": 1,
+  "workspaces": {
+    "": {
+      "dependencies": {
+        "n-readlines": "^1.0.1",
+      },
+    },
+  },
+  "packages": {
+    "n-readlines": ["n-readlines@1.0.1", "", {}, "sha512-z4SyAIVgMy7CkgsoNw7YVz40v0g4+WWvvqy8+ZdHrCtgevcEO758WQyrYcw3XPxcLxF+//RszTz/rO48nzD0wQ=="],
+  }
+}

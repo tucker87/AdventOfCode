@@ -3,3 +3,4 @@ obj
 .vscode
 .config
 .fake
+node_modules

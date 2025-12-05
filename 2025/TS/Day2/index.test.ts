@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { isValid, readInput, day1 } from './index.ts'
+import { isValid, isValid2, part1, part2, readInput } from './day2.ts'
 
 
 describe('isValid', () => {
@@ -20,18 +20,34 @@ describe('isValid', () => {
    })
 })
 
-describe('day1', () => {
+describe('part1', () => {
    it('should work on the sample', async () => {
-      const day1Sample = await readInput('../Inputs/Day2.sample.txt')
-      expect(day1(day1Sample)).toBe(1227775554)
+      const sample = await readInput('../Inputs/Day2.sample.txt')
+      expect(part1(sample)).toBe(1227775554)
    })
    it('should work', () => {
-      expect(day1(['10-11'])).toBe(11)
-      expect(day1(['123-123', '12345-12345'])).toBe(0)
-      expect(day1(['11-44'])).toBe(110)
-      expect(day1(['11-22'])).toBe(33)
-      expect(day1(['11-44', '11-22'])).toBe(143)
+      expect(part1(['10-11'])).toBe(11)
+      expect(part1(['123-123', '12345-12345'])).toBe(0)
+      expect(part1(['11-44'])).toBe(110)
+      expect(part1(['11-22'])).toBe(33)
+      expect(part1(['11-44', '11-22'])).toBe(143)
    })
 })
 
+describe('part2', () => {
+   it('should work', () => {
+      expect(isValid2('11')).toBe(false)
+      expect(isValid2('12')).toBe(true)
+      expect(isValid2('13')).toBe(true)
+      expect(isValid2('14')).toBe(true)
+      expect(isValid2('15')).toBe(true)
+      expect(isValid2('22')).toBe(false)
+      expect(isValid2('23')).toBe(true)
+      expect(isValid2('1188511885')).toBe(false)
+   })
 
+   it('should work on the sample', async () => {
+      const sample = await readInput('../Inputs/Day2.sample.txt')
+      expect(part2(sample)).toBe(4174379265)
+   })
+})

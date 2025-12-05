@@ -1,3 +1,7 @@
-const ref = (v: any) => ({ value: v })
+export type Ref<T> = {
+   value: T
+}
 
-export { ref }
+export const ref = <T>(v: T): Ref<T> => ({
+   value: v
+})

@@ -4,51 +4,59 @@ import { makeWrap } from './makeWrap.ts'
 const wrap0 = () => makeWrap(true, 0)
 const wrap2 = () => makeWrap(true, 2)
 
+const test = ({ wrap, answer }, direction: string, n: number) => {
+   wrap(direction, n);
+   return answer.value
+}
+
+const test0 = (direction: string, n: number) => test(wrap0(), direction, n)
+const test2 = (direction: string, n: number) => test(wrap2(), direction, n)
+
 describe('wrapping', () => {
    it('should work from 0', () => {
-      expect(wrap0()("R", 1)).toBe(0);
-      expect(wrap0()("L", 1)).toBe(0);
-      expect(wrap0()("R", 200)).toBe(2);
-      expect(wrap0()("L", 200)).toBe(2);
+      expect(test0("R", 1)).toBe(0);
+      expect(test0("L", 1)).toBe(0);
+      expect(test0("R", 200)).toBe(2);
+      expect(test0("L", 200)).toBe(2);
    });
 
    it('should work from 2', () => {
-      expect(wrap2()("R", 98)).toBe(1)
-      expect(wrap2()("R", 198)).toBe(2)
-      expect(wrap2()("L", 2)).toBe(1)
-      expect(wrap2()("L", 202)).toBe(3)
+      expect(test2("R", 98)).toBe(1)
+      expect(test2("R", 198)).toBe(2)
+      expect(test2("L", 2)).toBe(1)
+      expect(test2("L", 202)).toBe(3)
    })
 
    it('should pass the basic example', () => {
-      const wrap = makeWrap(true, 50)
-      let password = wrap("L", 68)
-      expect(password).toBe(1)
+      const { answer, wrap } = makeWrap(true, 50)
+      wrap("L", 68)
+      expect(answer.value).toBe(1)
 
-      password = wrap("L", 30)
-      expect(password).toBe(1)
+      wrap("L", 30)
+      expect(answer.value).toBe(1)
 
-      password = wrap("R", 48)
-      expect(password).toBe(2)
+      wrap("R", 48)
+      expect(answer.value).toBe(2)
 
-      password = wrap("L", 5)
-      expect(password).toBe(2)
+      wrap("L", 5)
+      expect(answer.value).toBe(2)
 
-      password = wrap("R", 60)
-      expect(password).toBe(3)
+      wrap("R", 60)
+      expect(answer.value).toBe(3)
 
-      password = wrap("L", 55)
-      expect(password).toBe(4)
+      wrap("L", 55)
+      expect(answer.value).toBe(4)
 
-      password = wrap("L", 1)
-      expect(password).toBe(4)
+      wrap("L", 1)
+      expect(answer.value).toBe(4)
 
-      password = wrap("L", 99)
-      expect(password).toBe(5)
+      wrap("L", 99)
+      expect(answer.value).toBe(5)
 
-      password = wrap("R", 14)
-      expect(password).toBe(5)
+      wrap("R", 14)
+      expect(answer.value).toBe(5)
 
-      password = wrap("L", 82)
-      expect(password).toBe(6)
+      wrap("L", 82)
+      expect(answer.value).toBe(6)
    })
 })

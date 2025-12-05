@@ -11,7 +11,7 @@ const main = async (includePassZero: boolean, lines: any) => {
    console.log(answer.value)
 }
 
-main(false, readLines('../../Inputs/Day1.txt'));
-main(true, readLines('../../Inputs/Day1.txt'));
+main(false, readLines('../Inputs/Day1.txt'));
+main(true, readLines('../Inputs/Day1.txt'));
 
 export { makeWrap }

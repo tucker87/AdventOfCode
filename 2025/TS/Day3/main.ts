@@ -1,4 +1,4 @@
-import { reduce } from '../Shared/generators.ts'
+import { sum } from '../Shared/generators.ts'
 
 export const _largestJoltage = (batteries: string, offset: number, depth: number, maxDepth: number) => {
    if (batteries.length === 0 || depth === maxDepth)
@@ -11,16 +11,16 @@ export const _largestJoltage = (batteries: string, offset: number, depth: number
          max = { a, combo }
    }
 
-   return '' + max.combo + _largestJoltage(batteries, max.a + 1, depth + 1, maxDepth)
+   return max.combo + _largestJoltage(batteries, max.a + 1, depth + 1, maxDepth)
 }
 
-export const largestJoltage = (batteries: string, maxDepth: number) =>
-   Number(_largestJoltage(batteries, 0, 0, maxDepth))
+export const makeLargestJoltage =
+   (maxDepth: number) =>
+      (batteries: string) =>
+         Number(_largestJoltage(batteries, 0, 0, maxDepth))
 
 export const main = async (lines: AsyncGenerator<string, void, unknown>, maxDepth: number = 2) => {
-   return await reduce((acc: number, curr: string) =>
-      acc + largestJoltage(curr, maxDepth),
-      0,
-      lines)
+   const largestJoltage = makeLargestJoltage(maxDepth)
+   return await sum(lines, largestJoltage)
 }
 

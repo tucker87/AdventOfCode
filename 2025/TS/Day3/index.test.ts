@@ -1,15 +1,16 @@
 import { describe, it, expect } from "vitest";
-import { largestJoltage, main } from './main.ts'
+import { makeLargestJoltage, main } from './main.ts'
 import { readLines } from '../Shared/readLines.ts'
 
 const sample = () => readLines('../Inputs/Day3.sample.txt')
+const largestJoltage = makeLargestJoltage(2)
 
 describe('largestJoltage', () => {
    it('should work', () => {
-      expect(largestJoltage("987654321111111", 2)).toBe(98);
-      expect(largestJoltage("811111111111119", 2)).toBe(89);
-      expect(largestJoltage("234234234234278", 2)).toBe(78);
-      expect(largestJoltage("818181911112111", 2)).toBe(92);
+      expect(largestJoltage("987654321111111")).toBe(98);
+      expect(largestJoltage("811111111111119")).toBe(89);
+      expect(largestJoltage("234234234234278")).toBe(78);
+      expect(largestJoltage("818181911112111")).toBe(92);
    })
 })
 

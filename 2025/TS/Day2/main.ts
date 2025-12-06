@@ -1,4 +1,5 @@
-import { stepper, reduce, filter } from '../Shared/generators.ts'
+import { reduce } from '../Shared/generators.ts'
+import { range, asyncFilter } from 'iter-tools'
 
 export const isValid = (n: string) => {
    if (n.length % 2 !== 0)
@@ -25,11 +26,11 @@ export const main = async (validCheck: Function, inputs: string[]) => {
    const ranges = inputs
       .map(i => {
          const [a, b] = i.split('-');
-         return stepper(Number(a), Number(b))
+         return range(Number(a), Number(b) + 1)
       })
 
-   let answer = ranges.reduce(async (answer: Promise<number>, range: Generator<number, void, unknown>) => {
-      const invalids = filter((n: number) => !validCheck("" + n), range)
+   let answer = ranges.reduce(async (answer: Promise<number>, r: Iterable<number>) => {
+      const invalids = asyncFilter((n: number) => !validCheck("" + n), r)
 
       const sum = await reduce((acc: number, curr: number) => acc + Number(curr), 0, invalids)
       return await answer + sum

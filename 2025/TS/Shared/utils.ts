@@ -1,5 +1,7 @@
+import { reduce } from 'iter-tools'
+
 export const sum = (arr: any[]) =>
-   arr.reduce((acc, curr) => acc + curr, 0)
+   reduce(0, (acc, curr) => acc + curr, arr)
 
 export const max = (arr: any[]) =>
-   arr.reduce((acc: number, curr: number) => Math.max(acc, curr), 0)
+   reduce(0, (acc: number, curr: number) => Math.max(acc, curr), arr)

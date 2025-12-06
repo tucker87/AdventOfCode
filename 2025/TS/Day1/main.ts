@@ -1,9 +1,9 @@
 import { makeWrap } from './makeWrap';
 
-export const main = async (includePassZero: boolean, lines: any) => {
+export const main = async (includePassZero: boolean, lines: AsyncGenerator<string, void, unknown>) => {
    const { wrap, answer } = makeWrap(includePassZero)
 
-   for await (const line of await lines) {
+   for await (const line of lines) {
       wrap(line[0], Number(line.substring(1)))
    }
 

@@ -1,4 +1,3 @@
-
 import { stepper, reduce, filter } from '../Shared/generators.ts'
 
 export const isValid = (n: string) => {
@@ -22,19 +21,19 @@ export const readInput = async (path: string) =>
       .split(',')
       .map(s => s.trim())
 
-export const main = (validCheck: Function, inputs: string[]) => {
+export const main = async (validCheck: Function, inputs: string[]) => {
    const ranges = inputs
       .map(i => {
          const [a, b] = i.split('-');
          return stepper(Number(a), Number(b))
       })
 
-   let answer = ranges.reduce((answer: number, range: Generator<number, void, unknown>) => {
+   let answer = ranges.reduce(async (answer: Promise<number>, range: Generator<number, void, unknown>) => {
       const invalids = filter((n: number) => !validCheck("" + n), range)
 
-      const sum = reduce((acc: number, curr: number) => acc + Number(curr), 0, invalids)
-      return answer + sum
-   }, 0)
+      const sum = await reduce((acc: number, curr: number) => acc + Number(curr), 0, invalids)
+      return await answer + sum
+   }, Promise.resolve(0))
 
    return answer
 }

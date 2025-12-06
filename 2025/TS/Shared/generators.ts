@@ -11,10 +11,10 @@ export function* filter<T>(p: Function, it: Generator<T, void, unknown>): Genera
    }
 }
 
-export const reduce = <TCurr, TAcc>(f: Function, i: TAcc, it: Generator<TCurr, void, unknown>) => {
+export const reduce = async <TCurr, TAcc>(f: Function, i: TAcc, it: Generator<TCurr, void, unknown> | AsyncGenerator<TCurr, void, unknown>) => {
    let o = i
 
-   for (const x of it)
+   for await (const x of it)
       o = f(o, x)
 
    return o

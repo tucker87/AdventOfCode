@@ -7,5 +7,5 @@ export const main = async (includePassZero: boolean, lines: AsyncGenerator<strin
       wrap(line[0], Number(line.substring(1)))
    }
 
-   console.log(answer.value)
+   return answer.value
 }

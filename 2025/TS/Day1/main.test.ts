@@ -1,3 +1,5 @@
+import { readLines } from '../Shared/readLines.ts'
+import { main } from './main.ts'
 import { describe, it, expect } from "vitest";
 import { makeWrap } from './makeWrap.ts'
 
@@ -58,5 +60,17 @@ describe('wrapping', () => {
 
       wrap("L", 82)
       expect(answer.value).toBe(6)
+   })
+})
+
+describe('part1', () => {
+   it('should work with the input', async () => {
+      expect(await main(false, readLines('../Inputs/Day1.txt'))).toBe(1145)
+   })
+})
+
+describe('part2', () => {
+   it('should work with the input', async () => {
+      expect(await main(true, readLines('../Inputs/Day1.txt'))).toBe(6561)
    })
 })

@@ -21,16 +21,22 @@ describe('isValid', () => {
 })
 
 describe('part1', () => {
-   it('should work on the sample', async () => {
-      const sample = await readInput('../Inputs/Day2.sample.txt')
-      expect(await part1(sample)).toBe(1227775554)
-   })
    it('should work', async () => {
       expect(await part1(['10-11'])).toBe(11)
       expect(await part1(['123-123', '12345-12345'])).toBe(0)
       expect(await part1(['11-44'])).toBe(110)
       expect(await part1(['11-22'])).toBe(33)
       expect(await part1(['11-44', '11-22'])).toBe(143)
+   })
+
+   it('should work on the sample', async () => {
+      const sample = await readInput('../Inputs/Day2.sample.txt')
+      expect(await part1(sample)).toBe(1227775554)
+   })
+
+   it('should work on the input', async () => {
+      const input = await readInput('../Inputs/Day2.txt')
+      expect(await part1(input)).toBe(44487518055)
    })
 })
 
@@ -49,5 +55,10 @@ describe('part2', () => {
    it('should work on the sample', async () => {
       const sample = await readInput('../Inputs/Day2.sample.txt')
       expect(await part2(sample)).toBe(4174379265)
+   })
+
+   it('should work on the input', async () => {
+      const input = await readInput('../Inputs/Day2.txt')
+      expect(await part2(input)).toBe(53481866137)
    })
 })

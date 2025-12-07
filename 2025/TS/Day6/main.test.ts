@@ -19,10 +19,10 @@ describe('part1', () => {
 
 describe('part2', () => {
    it('should work with the sample', () => {
-      expect(main(sample2)).toBe(4277556)
+      expect(main(sample2)).toBe(3263827)
    })
 
    it('should work with the input', () => {
-      expect(main(input2)).toBe(5977759036837)
+      expect(main(input2)).toBe(9630000828442)
    })
 })
